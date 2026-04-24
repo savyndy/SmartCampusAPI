@@ -30,7 +30,7 @@ This project is configured as a standard Maven Web Application and utilizes a li
 * Java Development Kit (JDK) 8 or higher
 * Apache Maven
 * Apache Tomcat Server (or equivalent lightweight servlet container)
-* IDE of choice (e.g., Apache NetBeans, Eclipse, or IntelliJ IDEA)
+* IDE of choice (e.g., Apache NetBeans)
 
 **Step-by-Step Instructions:**
 1. **Clone the Repository:** Clone this public GitHub repository to your local machine.

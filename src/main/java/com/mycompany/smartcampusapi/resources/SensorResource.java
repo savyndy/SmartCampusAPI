@@ -1,8 +1,8 @@
-package com.mycompany.snartcampusapi.resources;
+package com.mycompany.smartcampusapi.resources;
 
-import com.mycompany.snartcampusapi.data.DatabaseClass;
-import com.mycompany.snartcampusapi.models.Room;
-import com.mycompany.snartcampusapi.models.Sensor;
+import com.mycompany.smartcampusapi.data.DatabaseClass;
+import com.mycompany.smartcampusapi.models.Room;
+import com.mycompany.smartcampusapi.models.Sensor;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
@@ -44,7 +44,7 @@ public class SensorResource {
         
         // Validation: Verify that the roomId specified actually exists in the system 
         if (sensor.getRoomId() == null || !rooms.containsKey(sensor.getRoomId())) {
-            throw new com.mycompany.snartcampusapi.exceptions.LinkedResourceNotFoundException("Linked Room ID does not exist");
+            throw new com.mycompany.smartcampusapi.exceptions.LinkedResourceNotFoundException("Linked Room ID does not exist");
 }
 
         sensors.put(sensor.getId(), sensor);
@@ -55,6 +55,20 @@ public class SensorResource {
 
         URI uri = uriInfo.getAbsolutePathBuilder().path(sensor.getId()).build();
         return Response.created(uri).entity(sensor).build();
+    }
+    
+    
+    // GET /api/v1/sensors/{sensorId}: Fetch specific sensor
+    @GET
+    @Path("/{sensorId}")
+    public Response getSensor(@PathParam("sensorId") String sensorId) {
+        Sensor sensor = sensors.get(sensorId);
+        if (sensor == null) {
+            return Response.status(Response.Status.NOT_FOUND)
+                           .entity("{\"error\":\"Sensor not found\"}")
+                           .build();
+        }
+        return Response.ok(sensor).build();
     }
     
     // SUB-RESOURCE LOCATOR

@@ -1,0 +1,17 @@
+C:\Users\ASUS\Documents\NetBeansProjects\SmartCampusAPI\src\main\java\com\mycompany\smartcampusapi\exceptions\SensorUnavailableException.java
+C:\Users\ASUS\Documents\NetBeansProjects\SmartCampusAPI\src\main\java\com\mycompany\smartcampusapi\resources\SensorResource.java
+C:\Users\ASUS\Documents\NetBeansProjects\SmartCampusAPI\src\main\java\com\mycompany\smartcampusapi\models\Sensor.java
+C:\Users\ASUS\Documents\NetBeansProjects\SmartCampusAPI\src\main\java\com\mycompany\smartcampusapi\models\SensorReading.java
+C:\Users\ASUS\Documents\NetBeansProjects\SmartCampusAPI\src\main\java\com\mycompany\smartcampusapi\resources\SensorRoom.java
+C:\Users\ASUS\Documents\NetBeansProjects\SmartCampusAPI\src\main\java\com\mycompany\smartcampusapi\exceptions\LinkedResourceNotFoundExceptionMapper.java
+C:\Users\ASUS\Documents\NetBeansProjects\SmartCampusAPI\src\main\java\com\mycompany\smartcampusapi\JakartaRestConfiguration.java
+C:\Users\ASUS\Documents\NetBeansProjects\SmartCampusAPI\src\main\java\com\mycompany\smartcampusapi\exceptions\SensorUnavailableExceptionMapper.java
+C:\Users\ASUS\Documents\NetBeansProjects\SmartCampusAPI\src\main\java\com\mycompany\smartcampusapi\filters\APILoggingFilter.java
+C:\Users\ASUS\Documents\NetBeansProjects\SmartCampusAPI\src\main\java\com\mycompany\smartcampusapi\exceptions\GlobalExceptionMapper.java
+C:\Users\ASUS\Documents\NetBeansProjects\SmartCampusAPI\src\main\java\com\mycompany\smartcampusapi\exceptions\RoomNotEmptyExceptionMapper.java
+C:\Users\ASUS\Documents\NetBeansProjects\SmartCampusAPI\src\main\java\com\mycompany\smartcampusapi\resources\DiscoveryResource.java
+C:\Users\ASUS\Documents\NetBeansProjects\SmartCampusAPI\src\main\java\com\mycompany\smartcampusapi\resources\SensorReadingResource.java
+C:\Users\ASUS\Documents\NetBeansProjects\SmartCampusAPI\src\main\java\com\mycompany\smartcampusapi\exceptions\LinkedResourceNotFoundException.java
+C:\Users\ASUS\Documents\NetBeansProjects\SmartCampusAPI\src\main\java\com\mycompany\smartcampusapi\exceptions\RoomNotEmptyException.java
+C:\Users\ASUS\Documents\NetBeansProjects\SmartCampusAPI\src\main\java\com\mycompany\smartcampusapi\data\DatabaseClass.java
+C:\Users\ASUS\Documents\NetBeansProjects\SmartCampusAPI\src\main\java\com\mycompany\smartcampusapi\models\Room.java

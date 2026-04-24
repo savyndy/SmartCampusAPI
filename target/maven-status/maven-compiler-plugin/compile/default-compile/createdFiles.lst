@@ -1,0 +1,17 @@
+com\mycompany\smartcampusapi\JakartaRestConfiguration.class
+com\mycompany\smartcampusapi\exceptions\LinkedResourceNotFoundException.class
+com\mycompany\smartcampusapi\exceptions\SensorUnavailableExceptionMapper.class
+com\mycompany\smartcampusapi\exceptions\RoomNotEmptyException.class
+com\mycompany\smartcampusapi\models\Room.class
+com\mycompany\smartcampusapi\exceptions\LinkedResourceNotFoundExceptionMapper.class
+com\mycompany\smartcampusapi\exceptions\SensorUnavailableException.class
+com\mycompany\smartcampusapi\models\SensorReading.class
+com\mycompany\smartcampusapi\exceptions\RoomNotEmptyExceptionMapper.class
+com\mycompany\smartcampusapi\resources\SensorReadingResource.class
+com\mycompany\smartcampusapi\data\DatabaseClass.class
+com\mycompany\smartcampusapi\resources\DiscoveryResource.class
+com\mycompany\smartcampusapi\resources\SensorRoom.class
+com\mycompany\smartcampusapi\resources\SensorResource.class
+com\mycompany\smartcampusapi\filters\APILoggingFilter.class
+com\mycompany\smartcampusapi\exceptions\GlobalExceptionMapper.class
+com\mycompany\smartcampusapi\models\Sensor.class

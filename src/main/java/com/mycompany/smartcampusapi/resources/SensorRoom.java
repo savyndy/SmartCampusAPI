@@ -1,7 +1,7 @@
-package com.mycompany.snartcampusapi.resources;
+package com.mycompany.smartcampusapi.resources;
 
-import com.mycompany.snartcampusapi.data.DatabaseClass;
-import com.mycompany.snartcampusapi.models.Room;
+import com.mycompany.smartcampusapi.data.DatabaseClass;
+import com.mycompany.smartcampusapi.models.Room;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
@@ -10,6 +10,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +18,8 @@ import java.util.Map;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class SensorRoom {
+
+    public SensorRoom (){} 
 
     // Access the thread-safe in-memory database
     private Map<String, Room> rooms = DatabaseClass.getRooms();
@@ -32,11 +35,17 @@ public class SensorRoom {
     @Path("/{roomId}")
     public Response getRoom(@PathParam("roomId") String roomId) {
         Room room = rooms.get(roomId);
+        
         if (room == null) {
+            // 🚨 Use a Map to guarantee crash-proof JSON conversion
+            Map<String, String> errorMessage = new HashMap<>();
+            errorMessage.put("error", "Room not found");
+            
             return Response.status(Response.Status.NOT_FOUND)
-                           .entity("{\"error\":\"Room not found\"}")
+                           .entity(errorMessage)
                            .build();
         }
+        
         return Response.ok(room).build();
     }
 
@@ -44,8 +53,11 @@ public class SensorRoom {
     @POST
     public Response addRoom(Room room, @Context UriInfo uriInfo) {
         if (room.getId() == null || room.getId().trim().isEmpty()) {
+            Map<String, String> errorMessage = new HashMap<>();
+            errorMessage.put("error", "Room ID is required");
+            
             return Response.status(Response.Status.BAD_REQUEST)
-                           .entity("{\"error\":\"Room ID is required\"}")
+                           .entity(errorMessage)
                            .build();
         }
         
@@ -69,8 +81,8 @@ public class SensorRoom {
 
         // Business Logic Constraint: Prevent data orphans
         if (!room.getSensorIds().isEmpty()) {
-            throw new com.mycompany.snartcampusapi.exceptions.RoomNotEmptyException("Room is not empty. Cannot delete.");
-}
+            throw new com.mycompany.smartcampusapi.exceptions.RoomNotEmptyException("Room is not empty. Cannot delete.");
+        }
 
         rooms.remove(roomId);
         // Returns 204 No Content on successful deletion

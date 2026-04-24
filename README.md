@@ -1,40 +1,41 @@
-Smart Campus Sensor & Room Management API
-Overview
+# Smart Campus Sensor & Room Management API
+
+### Overview
 The "Smart Campus" Sensor & Room Management API is a high-performance RESTful web service designed to manage a university's campus-wide infrastructure, handling thousands of rooms and diverse arrays of sensors (such as CO2 monitors, occupancy trackers, and smart lighting controllers).
 
-Built strictly using JAX-RS (Jakarta RESTful Web Services) without the use of frameworks like Spring Boot, this API provides a seamless interface for campus facilities managers and automated building systems to interact with sensor telemetry and room metadata.
+Built strictly using **JAX-RS (Jakarta RESTful Web Services)** without the use of frameworks like Spring Boot, this API provides a seamless interface for campus facilities managers and automated building systems to interact with sensor telemetry and room metadata.
 
-Key Architectural Features:
+**Key Architectural Features:**
+* **Thread-Safe In-Memory Data Management:** As per project constraints, no external databases (e.g., SQL Server) are utilized. The system relies on synchronized, thread-safe data structures (`ConcurrentHashMap`, `CopyOnWriteArrayList`) to handle concurrent requests without data loss or race conditions.
+* **Deep Nesting via Sub-Resources:** Implements the Sub-Resource Locator pattern to maintain and append historical logs of readings for every sensor through a logical resource hierarchy (`/sensors/{sensorId}/readings`).
+* **Advanced Error Handling:** The API is "leak-proof" and never returns raw Java stack traces or default server error pages. It utilizes custom Exception Mappers to enforce business logic and return semantically accurate HTTP status codes with meaningful JSON bodies (e.g., `409 Conflict` for data orphans, `422 Unprocessable Entity` for dependency validation).
+* **Cross-Cutting Observability:** Integrates `ContainerRequestFilter` and `ContainerResponseFilter` to automatically log HTTP methods, URIs, and status codes for all incoming and outgoing API traffic.
+* **HATEOAS Discovery:** Features a root discovery endpoint that provides versioning metadata and hypermedia navigation links to primary resource collections.
 
-Thread-Safe In-Memory Data Management: As per project constraints, no external databases (e.g., SQL Server) are utilized. The system relies on synchronized, thread-safe data structures (ConcurrentHashMap, CopyOnWriteArrayList) to handle concurrent requests without data loss or race conditions.
 
-Deep Nesting via Sub-Resources: Implements the Sub-Resource Locator pattern to maintain and append historical logs of readings for every sensor through a logical resource hierarchy (/sensors/{sensorId}/readings).
 
-Advanced Error Handling: The API is "leak-proof" and never returns raw Java stack traces or default server error pages. It utilizes custom Exception Mappers to enforce business logic and return semantically accurate HTTP status codes with meaningful JSON bodies (e.g., 409 Conflict for data orphans, 422 Unprocessable Entity for dependency validation).
+### 🎥 Project Demonstration & Links
 
-Cross-Cutting Observability: Integrates ContainerRequestFilter and ContainerResponseFilter to automatically log HTTP methods, URIs, and status codes for all incoming and outgoing API traffic.
+* **10-Minute Demonstration Video:** [Watch on Google Drive](https://drive.google.com/file/d/1WGDoaOyYZNMbBNCrXrVx_4FlJ_YSCzMC/view?usp=drive_link)
+* **CSA Conceptual Report** [Conceptual Report pdf](https://drive.google.com/file/d/1GztennTmYHkINZJZnafDdwUuIb7lXfp1/view?usp=drive_link)
 
-HATEOAS Discovery: Features a root discovery endpoint that provides versioning metadata and hypermedia navigation links to primary resource collections.
 
-Build & Launch Instructions
+
+
+### Build & Launch Instructions
+
 This project is configured as a standard Maven Web Application and utilizes a lightweight servlet container (Apache Tomcat) to serve the JAX-RS endpoints.
 
-Prerequisites:
+**Prerequisites:**
+* Java Development Kit (JDK) 8 or higher
+* Apache Maven
+* Apache Tomcat Server (or equivalent lightweight servlet container)
+* IDE of choice (e.g., Apache NetBeans, Eclipse, or IntelliJ IDEA)
 
-Java Development Kit (JDK) 8 or higher
-
-Apache Maven
-
-Apache Tomcat Server (or equivalent lightweight servlet container)
-
-IDE of choice (e.g., Apache NetBeans, Eclipse, or IntelliJ IDEA)
-
-Step-by-Step Instructions:
-
-Clone the Repository: Clone this public GitHub repository to your local machine.
-
-Bash
-git clone https://github.com/savyndy/SmartCampusAPI.git
+**Step-by-Step Instructions:**
+1. **Clone the Repository:** Clone this public GitHub repository to your local machine.
+   ```bash
+   git clone [https://github.com/savyndy/SmartCampusAPI.git](https://github.com/savyndy/SmartCampusAPI.git)
 Open the Project: Open the cloned directory in your IDE. If using NetBeans, select File > Open Project and select the folder.
 
 Resolve Dependencies: Ensure Maven has downloaded the required Jersey (JAX-RS) and Jackson (JSON) dependencies. You can do this by right-clicking the project and selecting Clean and Build (or running mvn clean install in the terminal).
